@@ -1,0 +1,67 @@
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+  default     = "ap-northeast-2"
+}
+
+variable "vpc_cidr_block" {
+  description = "CIDR block for VPC"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
+variable "public_subnet_cidr_blocks" {
+  description = "Available cidr blocks for public subnets"
+  type        = list(string)
+  default = [
+    "10.0.1.0/24",
+    "10.0.2.0/24",
+    "10.0.3.0/24",
+    "10.0.4.0/24",
+    "10.0.5.0/24",
+    "10.0.6.0/24",
+    "10.0.7.0/24",
+    "10.0.8.0/24"
+  ]
+}
+
+variable "private_subnet_cidr_blocks" {
+  description = "Available cidr blocks for private subnets"
+  type        = list(string)
+  default = [
+    "10.0.101.0/24",
+    "10.0.102.0/24",
+    "10.0.103.0/24",
+    "10.0.104.0/24",
+    "10.0.105.0/24",
+    "10.0.106.0/24",
+    "10.0.107.0/24",
+    "10.0.108.0/24"
+  ]
+}
+
+variable "instances_per_subnet" {
+  description = "Number of EC2 instances per private subnet"
+  type        = number
+  default     = 1
+}
+
+variable "instance_type" {
+  description = "Instance type for EC2 instances"
+  type        = string
+  default     = "t3.micro"
+}
+
+# sensitive data는 .tfvars 파일에 따로 입력하여 사용
+# 특히 Github와 같은 공개된 저장소에 노출되지 않도록 주의
+variable "db_username" {
+  description = "Database administrator username"
+  type = string
+  sensitive = true # sensitive가 true이면 UI 및 output에 나타나지 않음
+}
+
+variable "db_password" {
+  description = "Database administrator password"
+  type = string
+  sensitive = true
+}
