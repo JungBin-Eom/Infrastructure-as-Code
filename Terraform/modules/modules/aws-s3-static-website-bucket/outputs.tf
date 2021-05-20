@@ -1,4 +1,5 @@
 # Output variable definitions
+# module이 사용될 때 CLI에 출력될 output 정의
 
 output "arn" {
   description = "ARN of the bucket"

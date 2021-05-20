@@ -69,3 +69,18 @@ module "ec2_instances" {
     Environment = "dev"
   }
 }
+
+# 생성한 S3 module 사용
+# terraform get 명령어로 모듈 설치
+
+module "website_s3_bucket" {
+  source = "./modules/aws-s3-static-website-bucket"
+
+  # bucket 이름은 유니크해야하기 때문에 날짜를 적어서 많이 사용
+  bucket_name = "ricky-terraform-website-21-05-20" 
+
+  tags = {
+    Terraform = "true"
+    Environment = "dev"
+  }
+}
