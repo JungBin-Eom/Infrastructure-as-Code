@@ -10,3 +10,7 @@
 
 # .tfvars files
 *.tfvars
+
+# ssh key
+*.pub
+tf-cloud-init
