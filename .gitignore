@@ -14,3 +14,4 @@
 # ssh key
 *.pub
 tf-cloud-init
+packer-key
